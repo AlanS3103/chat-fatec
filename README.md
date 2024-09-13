@@ -1,5 +1,7 @@
 # chat_fatec
 
+Projeto sendo desenvolvido em Flutter nas aulas de Programação de dispositivos Mobile.
+
 A new Flutter project.
 
 ## Getting Started
