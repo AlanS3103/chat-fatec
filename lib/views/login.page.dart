@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/chat');
+                    Navigator.pushReplacementNamed(context, '/chats');
                   },
                 ),
               ),

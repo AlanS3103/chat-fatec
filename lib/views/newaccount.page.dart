@@ -30,9 +30,9 @@ class NewAccountPage extends StatelessWidget {
                     children: [
                       Center(child: Icon(Icons.person_outline, size: 56)),
                       Positioned(
-                        child: Icon(Icons.add_circle, size: 24),
                         bottom: 0,
                         right: 1,
+                        child: Icon(Icons.add_circle, size: 24),
                       ),
                     ],
                   ),

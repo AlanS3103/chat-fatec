@@ -12,7 +12,9 @@ class ChatsPage extends StatelessWidget {
         title: Text("Chats"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/chat');
+            },
             icon: Icon(Icons.chat_outlined),
           ),
           IconButton(
@@ -69,7 +71,8 @@ class ChatsItem extends StatelessWidget {
   final DateTime date;
   final int amount;
 
-  ChatsItem({
+  const ChatsItem({
+    super.key,
     required this.userName,
     required this.lastMessage,
     required this.date,
