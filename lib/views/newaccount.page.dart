@@ -100,7 +100,9 @@ class NewAccountPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/chats');
+                    },
                   ),
                 ),
               ]),

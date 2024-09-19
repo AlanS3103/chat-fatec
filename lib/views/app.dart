@@ -3,6 +3,7 @@
 import 'package:chat_fatec/views/chat.page.dart';
 import 'package:chat_fatec/views/chats.page.dart';
 import 'package:chat_fatec/views/newaccount.page.dart';
+import 'package:chat_fatec/views/newchat.page.dart';
 import 'package:flutter/material.dart';
 
 import 'login.page.dart';
@@ -16,9 +17,10 @@ class ChatFatecApp extends StatelessWidget {
         "/login": (context) => LoginPage(),
         "/new-account": (context) => NewAccountPage(),
         "/chats": (context) => ChatsPage(),
+        "/new-chat": (context) => NewChatPage(),
         "/chat": (context) => ChatPage(),
       },
-      initialRoute: "/chat",
+      initialRoute: "/new-chat",
     );
   }
 }

@@ -13,7 +13,7 @@ class ChatsPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/chat');
+              Navigator.pushNamed(context, '/new-chat');
             },
             icon: Icon(Icons.chat_outlined),
           ),
