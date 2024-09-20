@@ -20,7 +20,7 @@ class ChatFatecApp extends StatelessWidget {
         "/new-chat": (context) => NewChatPage(),
         "/chat": (context) => ChatPage(),
       },
-      initialRoute: "/new-chat",
+      initialRoute: "/login",
     );
   }
 }

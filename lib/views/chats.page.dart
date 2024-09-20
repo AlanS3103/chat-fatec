@@ -43,22 +43,28 @@ class ChatsPage extends StatelessWidget {
             ),
           ),
           Flexible(
-              child: ListView(
-            children: [
-              ChatsItem(
-                userName: "Fulano",
-                lastMessage: "Bom dia!",
-                date: DateTime.now(),
-                amount: 2,
-              ),
-              ChatsItem(
-                userName: "Ciclano",
-                lastMessage: "Bom dia!",
-                date: DateTime.now(),
-                amount: 2,
-              ),
-            ],
-          ))
+            child: ListView(
+              children: [
+                ChatsItem(
+                  userName: "Fulano",
+                  lastMessage: "Bom dia!",
+                  date: DateTime.now(),
+                  amount: 2,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/chat');
+                  },
+                  child: ChatsItem(
+                    userName: "Ciclano",
+                    lastMessage: "Bom dia!",
+                    date: DateTime.now(),
+                    amount: 2,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

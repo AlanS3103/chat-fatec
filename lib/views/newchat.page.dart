@@ -69,25 +69,10 @@ class NewChatsItem extends StatelessWidget {
         height: 48,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          image:
-              DecorationImage(image: NetworkImage('https://picsum.photos/200')),
+          image: DecorationImage(
+            image: NetworkImage('https://picsum.photos/500'),
+          ),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Icon(
-              Icons.circle,
-              color: isOnline ? Colors.green : Colors.grey,
-              size: 12,
-            ),
-            Icon(
-              Icons.circle,
-              color: Colors.white,
-              size: 14,
-            ),
-          ],
-        ), 
       ),
       title: Text(userName),
       subtitle: Text(lastSeen),
