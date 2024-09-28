@@ -1,9 +1,37 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class NewAccountPage extends StatelessWidget {
-  const NewAccountPage({super.key});
+  final txtName = TextEditingController();
+  final txtEmail = TextEditingController();
+  final txtPassword = TextEditingController();
+
+  Future<void> createUser(BuildContext context) async {
+    try {
+      var userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: txtEmail.text,
+        password: txtPassword.text,
+      );
+
+      await userCredential.user!.updateDisplayName(txtName.text);
+      // await userCredential.user!.updatePhoneNumber(txtPhoto.text);
+      // await userCredential.user!.updatePhotoURL(photo_url_from_storage);
+      // await userCredential.user.delete();
+
+      Navigator.of(context)
+        ..pop()
+        ..pushReplacementNamed('/chats');
+    } on FirebaseAuthException catch (ex) {
+      var snackBar = SnackBar(
+        content: Text(ex.message ?? 'Erro inesperado!'),
+        backgroundColor: Colors.red,
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +73,7 @@ class NewAccountPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextField(
+                    controller: txtName,
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
                       hintText: "Name",
@@ -61,6 +90,7 @@ class NewAccountPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextField(
+                    controller: txtEmail,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: "E-mail",
@@ -76,6 +106,7 @@ class NewAccountPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextField(
+                    controller: txtPassword,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       hintText: "Password",
@@ -94,15 +125,13 @@ class NewAccountPage extends StatelessWidget {
                         Color(0xFF002DE3),
                       ),
                     ),
+                    onPressed: () => createUser(context),
                     child: Text(
                       "Salvar",
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/chats');
-                    },
                   ),
                 ),
               ]),

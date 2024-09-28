@@ -1,9 +1,30 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final txtEmail = TextEditingController();
+  final txtPassword = TextEditingController();
+
+  Future<void> sigIn(BuildContext context) async {
+    try {
+      // FirebaseAuth.instance.sendPasswordResetEmail(email: txtEmail.text);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: txtEmail.text,
+        password: txtPassword.text,
+      );
+      // Navigator.pushReplacementNamed(context, '/chats');
+    } on FirebaseAuthException catch (ex) {
+      var snackBar = SnackBar(
+        content: Text(ex.message ?? 'Erro inexperado!!'),
+        backgroundColor: Colors.red,
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +44,7 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: TextField(
+                  controller: txtEmail,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: "E-mail",
@@ -38,6 +60,7 @@ class LoginPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: TextField(
+                  controller: txtPassword,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: "Password",
@@ -62,9 +85,7 @@ class LoginPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/chats');
-                  },
+                  onPressed: () => sigIn(context),
                 ),
               ),
               TextButton(

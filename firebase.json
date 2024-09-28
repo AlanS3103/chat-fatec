@@ -1,0 +1,30 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "chat-fatec-ee585",
+          "appId": "1:1046072705615:android:a2d78aed75576c84ab603a",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "chat-fatec-ee585",
+          "configurations": {
+            "android": "1:1046072705615:android:a2d78aed75576c84ab603a",
+            "web": "1:1046072705615:web:f30382fd0145f82dab603a"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
